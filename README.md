@@ -94,7 +94,7 @@ public class TestNamespaceHandler extends NamespaceHandlerSupport {
 }
 ~~~
 
-You also need plumbing in terms of [XSD](https://github.com/alexec/test-double-deps-with-spring/blob/master/src/main/resources/com/alexecollins/testing/test.xsd), [spring.schemas](https://github.com/alexec/test-double-deps-with-spring/blob/master/src/main/resources/META-INF/spring.schemas) and [spring.handlers](https://github.com/alexec/test-double-deps-with-spring/blob/master/src/main/resources/META-INF/spring.handlers) files. 
+And then we also need plumbing in terms of [XSD](https://github.com/alexec/test-double-deps-with-spring/blob/master/src/main/resources/com/alexecollins/testing/test.xsd), [spring.schemas](https://github.com/alexec/test-double-deps-with-spring/blob/master/src/main/resources/META-INF/spring.schemas) and [spring.handlers](https://github.com/alexec/test-double-deps-with-spring/blob/master/src/main/resources/META-INF/spring.handlers) files. I'm not going to cover the details, the Spring documentation do a great job of this.
 
 
 Mocks
@@ -115,7 +115,7 @@ A mock is a test double with behaviour we can control. Mocks are more versatile 
 
 Partial Fake
 ---
-A fake is an implementation that takes "short-cuts", e.g. an in memory database. Some of the interfaces we rely on have a large number of methods, but we only use a minority of them. How can we create a class that implements a subset of the methods we need? An abstract class will allow us to do that. Here's our interface:
+A fake is an implementation that takes "short-cuts", e.g. an in memory database. Some of the interfaces we rely on have a large number of methods, but we only use a minority of them. How can we create a class that implements a subset of the methods we need, and automatically return default (dummy) values for those we don't need? An abstract class will allow us to do that. Here's our interface:
 
 ~~~java
 public interface Example {
@@ -175,6 +175,9 @@ Again, we can create an XML namespace for a nice, tidy XML:
     <test:fake id="example1" class="com.alexecollins.testing.PartialFakeExample"/>        
 ~~~
 
+The partial fake is the most versatile of the doubles here, with a fully defined set of methods, it becomes a normal fake, it can provide stubbed answers, or just defaults like a dummy. A dummy is a stub returning only default answers.
+
+
 Stubs
 ---
 To complete our set of doubles, we'll need stubs. Stubs return canned responses. This is similar to fakes, but unlike our fakes, they are not partial. One very good implementation is [a normal bean](https://github.com/alexec/test-double-deps-with-spring/blob/master/src/test/java/com/alexecollins/testing/StubExample.java), unlike any special XML, it's type-safe, easy to use and easy to understand. As a stub provides canned responses, we might expect it to have a no-args constructor, this suggests the following implementation for the factory:
@@ -203,7 +206,7 @@ A number of classes imported have more auto-wired fields than that methods we ca
 
 Test Lifecycle
 ---
-Spring re-uses the context between tests. This means the beans become "dirty". You can use @DirtiesContext to create a new context, but it's expensive and can lead to out-of-perm-gen probles. Instead, we want an annotation similar to JUnit's @Before annotation, which indicates that a method should be called before each test.
+Spring re-uses the context between tests. This means the beans become "dirty". You can use @DirtiesContext to tear-down and rebuild the context between test, but it's expensive and can lead to out-of-perm-gen problems. Instead, we want an annotation similar to JUnit's @Before annotation, which indicates that a method should be called before each test.
 
 ~~~java
 @Inherited
@@ -248,6 +251,24 @@ public class DoubleManager {
 }
 ~~~
 
+The the test double can use this to reset itself:
+
+~~~java
+public class ManagedExample implements Example {
+    private int value;
+
+    @Before
+    public void setUp() {
+        value = 1;
+    }
+
+    @Override
+    public int intValue() {
+        return value;
+    }
+    ...
+~~~
+
 This is best demonstrated by an example test:
 
 ~~~java
@@ -265,4 +286,4 @@ public class DoubleManagerTest {
 
 OK. So I hope you enjoyed this post, and you get some good ideas from it. The code can be [found on Github](https://github.com/alexec/test-double-deps-with-spring) as usual.
 
-Want more like this post? Try [this post on test support for Tomcat and Spring](tutorial-junit-rule.html).
+Want more like this post? Try [this post on test support for Tomcat and Spring](tutorial-junit-rule).
