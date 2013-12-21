@@ -9,14 +9,16 @@
 
     <xsd:import namespace="http://www.springframework.org/schema/beans"/>
 
-    <xsd:element name="dummy">
-        <xsd:complexType>
-            <xsd:complexContent>
-                <xsd:extension base="beans:identifiedType">
-                    <xsd:attribute name="class" type="xsd:string"/>
-                </xsd:extension>
-            </xsd:complexContent>
-        </xsd:complexType>
-    </xsd:element>
+    <xsd:element name="dummy" type="double"/>
+    <xsd:element name="fake" type="double"/>
+
+
+    <xsd:complexType name="double">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:attribute name="class" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
 
 </xsd:schema>

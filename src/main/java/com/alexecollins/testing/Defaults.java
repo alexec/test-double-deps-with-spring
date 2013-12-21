@@ -21,6 +21,6 @@ class Defaults {
     }
 
     static Object get(Class<?> type) {
-        return DEFAULTS.get(type);
+        return type.isPrimitive() ? DEFAULTS.get(type) : type.isArray() ? new Object[0] : null;
     }
 }
