@@ -3,8 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean class="com.alexecollins.mocking.MockFactoryBean">
-        <constructor-arg value="java.lang.Runnable"/>
+    <bean class="com.alexecollins.testing.TestDummyFactoryBean">
+        <constructor-arg value="com.alexecollins.testing.Example"/>
     </bean>
 
 </beans>
