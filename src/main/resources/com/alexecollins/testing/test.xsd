@@ -10,8 +10,8 @@
     <xsd:import namespace="http://www.springframework.org/schema/beans"/>
 
     <xsd:element name="dummy" type="double"/>
+    <xsd:element name="mock" type="double"/>
     <xsd:element name="fake" type="double"/>
-
 
     <xsd:complexType name="double">
         <xsd:complexContent>

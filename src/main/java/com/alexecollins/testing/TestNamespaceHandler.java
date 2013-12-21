@@ -30,6 +30,7 @@ public class TestNamespaceHandler extends NamespaceHandlerSupport {
     @Override
     public void init() {
         registerBeanDefinitionParser("dummy", new TestDoubleBeanDefinitionParser(TestDummyFactoryBean.class));
+        registerBeanDefinitionParser("mock", new TestDoubleBeanDefinitionParser(MockFactoryBean.class));
         registerBeanDefinitionParser("fake", new TestDoubleBeanDefinitionParser(PartialFakeFactoryBean.class));
     }
 }
