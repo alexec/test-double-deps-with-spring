@@ -32,5 +32,6 @@ public class TestNamespaceHandler extends NamespaceHandlerSupport {
         registerBeanDefinitionParser("dummy", new TestDoubleBeanDefinitionParser(TestDummyFactoryBean.class));
         registerBeanDefinitionParser("mock", new TestDoubleBeanDefinitionParser(MockFactoryBean.class));
         registerBeanDefinitionParser("fake", new TestDoubleBeanDefinitionParser(PartialFakeFactoryBean.class));
+        registerBeanDefinitionParser("stub", new TestDoubleBeanDefinitionParser(StubFactoryBean.class));
     }
 }

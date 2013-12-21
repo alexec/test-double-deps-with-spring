@@ -12,6 +12,7 @@
     <xsd:element name="dummy" type="double"/>
     <xsd:element name="mock" type="double"/>
     <xsd:element name="fake" type="double"/>
+    <xsd:element name="stub" type="double"/>
 
     <xsd:complexType name="double">
         <xsd:complexContent>
