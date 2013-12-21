@@ -30,8 +30,7 @@ public class TestDummyFactoryBean implements FactoryBean {
             @Override
             public Object invoke(Object o, Method method, Object[] objects) throws Exception {
                 final Class<?> returnType = method.getReturnType();
-                return returnType.isPrimitive() ?
-                        DEFAULTS.get(returnType) :
+                return returnType.isPrimitive() ? DEFAULTS.get(returnType) :
                         returnType.isArray() ? new Object[0] : null;
             }
         });
