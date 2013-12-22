@@ -33,11 +33,5 @@ public class TestNamespaceHandler extends NamespaceHandlerSupport {
         registerBeanDefinitionParser("mock", new TestDoubleBeanDefinitionParser(MockFactoryBean.class));
         registerBeanDefinitionParser("fake", new TestDoubleBeanDefinitionParser(PartialFakeFactoryBean.class));
         registerBeanDefinitionParser("stub", new TestDoubleBeanDefinitionParser(StubFactoryBean.class));
-        registerBeanDefinitionParser("double-manager", new AbstractSingleBeanDefinitionParser() {
-            @Override
-            protected Class getBeanClass(Element element) {
-                return DoubleManager.class;
-            }
-        });
     }
 }

@@ -14,14 +14,6 @@
     <xsd:element name="fake" type="double"/>
     <xsd:element name="stub" type="double"/>
 
-    <xsd:element name="double-manager">
-        <xsd:complexType>
-            <xsd:complexContent>
-                <xsd:extension base="beans:identifiedType"/>
-            </xsd:complexContent>
-        </xsd:complexType>
-    </xsd:element>
-
     <xsd:complexType name="double">
         <xsd:complexContent>
             <xsd:extension base="beans:identifiedType">

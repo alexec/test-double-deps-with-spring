@@ -8,8 +8,6 @@ http://www.alexecollins.com/schema/test http://www.alexecollins.com/schema/test/
 
     <context:annotation-config/>
 
-    <test:double-manager id="doubleManager"/>
-
     <test:fake id="example" class="com.alexecollins.testing.ManagedExample"/>
 
 </beans>
