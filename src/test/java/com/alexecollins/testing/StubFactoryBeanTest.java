@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  * @author alex.collins
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "applicationContext-StubFactoryBeanTest.xml")
+@ContextConfiguration
 public class StubFactoryBeanTest {
     @Autowired
     private Example example;

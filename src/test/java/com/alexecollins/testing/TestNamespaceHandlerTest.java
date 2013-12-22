@@ -12,7 +12,7 @@ import static junit.framework.Assert.assertNotNull;
  * @author alex.collins
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "applicationContext-TestNamespaceHandlerTest.xml")
+@ContextConfiguration
 public class TestNamespaceHandlerTest {
 
     @Autowired

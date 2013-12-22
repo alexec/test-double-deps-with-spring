@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  * @author alex.collins
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "applicationContext-PartialFakeFactoryBeanTest.xml")
+@ContextConfiguration
 public class PartialFakeFactoryBeanTest {
 
     @Autowired

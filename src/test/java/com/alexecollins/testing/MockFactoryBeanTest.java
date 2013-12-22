@@ -13,7 +13,7 @@ import static org.mockito.Mockito.when;
  * @author alex.collins
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "applicationContext-MockFactoryBeanTest.xml")
+@ContextConfiguration
 public class MockFactoryBeanTest {
     @Autowired
     Example example;

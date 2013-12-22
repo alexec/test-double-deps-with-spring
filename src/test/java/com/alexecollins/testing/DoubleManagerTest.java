@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  * @author alex.collins
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "applicationContext-DoubleManagerTest.xml")
+@ContextConfiguration(locations = "DoubleManagerTest-context.xml")
 public class DoubleManagerTest {
     @Autowired
     DoubleManager doubleManager;
